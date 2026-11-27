@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f8ff">
+  <meta name="description" content="과제와 제출 일정을 한눈에 정리하는 대학생 과제 관리 서비스">
+  <title>과제체크 | 과제와 일정을 한눈에</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="과제체크 홈">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <span>과제체크</span>
+      </a>
+      <span class="private-note"><span class="lock-icon" aria-hidden="true">▣</span> 내 브라우저에만 저장돼요</span>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">YOUR SEMESTER, IN ORDER</p>
+          <h1 id="page-title">과제, 하나씩 <span>체크!</span></h1>
+          <p class="hero-subtitle">마감일을 놓치지 않도록, 오늘 할 일을 정리해요.</p>
+          <p class="today-line"><span class="calendar-icon" aria-hidden="true">▦</span><span id="today-date"></span></p>
+        </div>
+        <div class="hero-illustration" aria-hidden="true">
+          <div class="paper"><span class="paper-check">✓</span><i></i><i></i><i></i></div>
+          <span class="sparkle sparkle-one">✦</span><span class="sparkle sparkle-two">✧</span>
+        </div>
+      </section>
+
+      <section class="summary-card" aria-label="과제 요약">
+        <div class="summary-icon" aria-hidden="true">↗</div>
+        <div class="summary-copy"><p>아직 남은 과제</p><p class="summary-number"><strong id="remaining-count">0</strong><span>개</span></p></div>
+        <p class="summary-message" id="summary-message">새로운 과제를 등록해 보세요.</p>
+      </section>
+
+      <section class="workspace" aria-label="과제 관리">
+        <section class="form-panel" aria-labelledby="form-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">NEW ASSIGNMENT</p><h2 id="form-title">과제 등록</h2></div>
+            <span class="heading-icon" aria-hidden="true">＋</span>
+          </div>
+          <p class="panel-description">과제 정보를 입력하고 일정을 관리해 보세요.</p>
+          <form id="assignment-form">
+            <label for="course-name">과목명</label>
+            <input id="course-name" name="course" type="text" maxlength="60" placeholder="예: 자료구조" required autocomplete="off">
+            <label for="assignment-name">과제명</label>
+            <input id="assignment-name" name="title" type="text" maxlength="100" placeholder="예: 3주차 알고리즘 문제" required autocomplete="off">
+            <label for="due-date">마감일</label>
+            <input id="due-date" name="dueDate" type="date" required>
+            <button class="primary-button" type="submit"><span aria-hidden="true">＋</span> 과제 추가</button>
+          </form>
+          <p class="privacy-hint"><span aria-hidden="true">🔒</span> 입력한 정보는 이 기기에만 저장됩니다.</p>
+        </section>
+
+        <section class="list-panel" aria-labelledby="list-title">
+          <div class="list-heading">
+            <div class="section-heading">
+              <div><p class="eyebrow">MY ASSIGNMENTS</p><h2 id="list-title">과제 목록 <span class="total-badge" id="total-count">0</span></h2></div>
+            </div>
+            <p class="sort-note"><span aria-hidden="true">↕</span> 마감일이 빠른 순</p>
+          </div>
+          <div class="filters" role="group" aria-label="과제 목록 필터">
+            <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">전체 <span id="all-count">0</span></button>
+            <button class="filter-button" type="button" data-filter="active" aria-pressed="false">진행 중 <span id="active-count">0</span></button>
+            <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">완료 <span id="completed-count">0</span></button>
+          </div>
+          <div id="assignment-list" class="assignment-list" aria-live="polite" aria-relevant="additions removals text"></div>
+          <p id="status-message" class="sr-only" role="status" aria-live="polite"></p>
+        </section>
+      </section>
+    </main>
+    <footer>작은 체크가 모여, 여유로운 학기가 돼요 <span aria-hidden="true">✦</span></footer>
+  </div>
+</body>
+</html>
